@@ -10,7 +10,8 @@ export const useSocket = () => {
   const [systemLogs, setSystemLogs] = useState<any[]>([]);
 
   useEffect(() => {
-    const newSocket = io('http://localhost:3000/api', {
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
+    const newSocket = io(`${apiUrl}/api`, {
       transports: ['websocket'],
     });
 
